@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Events and Nested Component</title>
+</head>
+<body>
+    <div>
+        <h1>Events and Nested Component</h1>
+    </div>
+    <div id="root"></div>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/create-react-class.js"></script>
+    <script src="./scripts/babel.js"></script>
+
+    <script type="text/babel">
+        var ButtonComponent = function (props) {
+            return (<button onClick={props.handler}>{props.caption}</button>);
+        }
+
+        var Component = createReactClass({
+            clickHandler:function(){
+                alert('Clicked');
+            },
+            render:function(){
+                return(<ButtonComponent handler={this.clickHandler} caption={"Click"}/>);
+            }
+        });
+
+        ReactDOM.render(<Component/>,document.querySelector('#root'));
+    </script>
+</body>
+</html>

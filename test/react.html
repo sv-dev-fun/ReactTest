@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Props</title>
+</head>
+<body>
+    <div>
+        <h1>Props</h1>
+    </div>
+    <div id="root"></div>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/create-react-class.js"></script>
+    <script src="./scripts/babel.js"></script>
+
+    <script type="text/babel">
+
+       var Cities = function(props){
+            return (<div>{props.children[0].props.children}</div>); 
+       }
+
+       var Greet = createReactClass({
+           getDefaultProps:function(){
+                return {
+                    name:'Guest',
+                    location:{
+                        'state':'Karnataka',
+                        'city':'Bangalore'
+                    },
+                    currentDate:new Date()
+                }
+           },
+           render:function() {
+               return (<div>
+                    <h1>{this.props.name}</h1>
+                    <h2>{this.props.location.city}</h2>
+                    <h3>{this.props.currentDate.toLocaleDateString()}</h3>
+                </div>);
+           }
+       });
+
+       ReactDOM.render(<div>
+        <Greet/>
+        <hr/>
+        <Greet name={"Karthik"} location={{ state:"TN", city:"Chennai"}}/>
+        <Cities>
+            <div>Mumbai</div>
+            <div>Pune</div>
+        </Cities>
+        </div>,document.querySelector('#root'));
+    </script>
+</body>
+</html>
