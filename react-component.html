@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>React Component</title>
+</head>
+<body>
+    <div>
+        <h1>React Component</h1>
+    </div>
+    <div id="root"></div>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/create-react-class.js"></script>
+    <script src="./scripts/babel.js"></script>
+
+    <script type="text/babel">
+        var Button = createReactClass({
+            render:function() {
+                return (<div>
+                    <button>React-Button</button>    
+                </div>);
+            }
+        });
+
+        ReactDOM.render(<div>
+            <Button/>
+            <Button/>
+        </div>,document.querySelector('#root'));
+    </script>
+</body>
+</html>

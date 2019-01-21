@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>using state</title>
+</head>
+
+<body>
+    <div>
+        <h1>using state</h1>
+    </div>
+    <div id="root"></div>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/create-react-class.js"></script>
+    <script src="./scripts/babel.js"></script>
+
+    <script type="text/babel">
+        var CheckBoxComponent = createReactClass({
+            getInitialState:function(){
+                return { checked : true }
+            },
+            changeState:function(){
+               this.setState({ checked : !this.state.checked })
+            },
+            render:function () {
+                return (<div>
+                    <input type="checkbox" defaultChecked={this.state.checked} onChange={this.changeState}/>
+                    <hr/>
+                    <span>Checked Status : {this.state.checked?"Checked":"Unchecked"}</span>
+                </div>);
+            }
+        });
+        ReactDOM.render(<CheckBoxComponent/>,document.querySelector('#root'));
+    </script>
+</body>
+
+</html>

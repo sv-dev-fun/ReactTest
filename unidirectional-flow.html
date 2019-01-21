@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Uni-Directional Flow</title>
+</head>
+
+<body>
+    <div>
+        <h1>Uni-Directional Flow</h1>
+    </div>
+    <div id="root"></div>
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+    <script src="./scripts/create-react-class.js"></script>
+    <script src="./scripts/babel.js"></script>
+
+    <script type="text/babel">
+        var ParentComponent = createReactClass({
+            getInitialState:function(){
+                return {val : ''}
+            },
+            updateVal:function(event){
+                this.setState({val:event.target.value});
+            },
+            render:function() {
+                return (<div>
+                    Data : <input type="text" onChange={this.updateVal}/>
+                    <hr/>
+                    <ChildComponent data={this.state.val}/>
+                </div>);
+            }
+        });
+
+        var ChildComponent = function(props) {
+                return (<span>Data from Parent : {props.data}</span>);
+        }
+        
+        ReactDOM.render(<ParentComponent/>,document.querySelector('#root'));
+
+    </script>
+</body>
+
+</html>
